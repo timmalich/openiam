@@ -1,0 +1,69 @@
+entity Country {
+	countryName String required,
+    countryCode String required unique
+}
+
+entity Organization {
+	id String required unique,
+    name String required,
+    postcode String,
+    city String,
+    streetAddress String,
+    stateProvince String,
+    country Country,
+    community Community required
+}
+
+entity User {
+	id String required unique,
+	title String,
+    firstName String required,
+	lastName String required,
+	email String required,
+	phoneNumber String,
+	community Community required,
+    language Language,
+    blocked Boolean,
+    country Country
+}
+
+entity Application {
+	id String required unique,
+	name String required,
+    description String,
+    community Community
+}
+
+entity Entitlement {
+	id String required unique,
+    name String,
+    description String
+}
+
+enum Language {
+    FR, EN, SP, DE, ZH
+}
+
+enum Community {
+	BOT, EMPLOYEE, DEALER, SUPPLIER, CUSTOMER, POOLID, PARTNER
+}
+
+relationship ManyToMany {
+	User to Entitlement,
+    User to Organization
+}
+
+relationship OneToMany {
+	Application to Entitlement
+    User to Country
+    Organization to Country
+}
+
+relationship OneToMany {
+	Entitlement to Entitlement
+   	Organization to Organization
+
+}
+
+paginate User, Entitlement, Organzation, Application with infinite-scroll
+service all with serviceImpl 
