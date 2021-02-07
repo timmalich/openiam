@@ -10,11 +10,10 @@ entity Organization {
     city String,
     streetAddress String,
     stateProvince String,
-    country Country,
     community Community required
 }
 
-entity User {
+entity Accessor {
 	id String required unique,
 	title String,
     firstName String required,
@@ -23,8 +22,7 @@ entity User {
 	phoneNumber String,
 	community Community required,
     language Language,
-    blocked Boolean,
-    country Country
+    blocked Boolean
 }
 
 entity Application {
@@ -49,21 +47,20 @@ enum Community {
 }
 
 relationship ManyToMany {
-	User to Entitlement,
-    User to Organization
+	Accessor to Entitlement,
+    Accessor to Organization
 }
 
 relationship OneToMany {
 	Application to Entitlement
-    User to Country
+    Accessor to Country
     Organization to Country
 }
 
-relationship OneToMany {
-	Entitlement to Entitlement
-   	Organization to Organization
+//relationship OneToMany {
+//	Entitlement to Entitlement
+//   	Organization to Organization
+//}
 
-}
-
-paginate User, Entitlement, Organzation, Application with infinite-scroll
+paginate Accessor with infinite-scroll
 service all with serviceImpl 

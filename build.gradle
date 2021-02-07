@@ -143,7 +143,7 @@ liquibase {
     activities {
         main {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/openiam"
+            url "jdbc:postgresql://localhost:54320/openiam"
             username "openiam"
             password ""
             changeLogFile "src/main/resources/config/liquibase/master.xml"
@@ -153,7 +153,7 @@ liquibase {
         }
         diffLog {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/openiam"
+            url "jdbc:postgresql://localhost:54320/openiam"
             username "openiam"
             password ""
             changeLogFile project.ext.diffChangelogFile
