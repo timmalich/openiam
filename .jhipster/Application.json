@@ -1,0 +1,40 @@
+{
+  "name": "Application",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "community",
+      "fieldType": "Community",
+      "fieldValues": "BOT,EMPLOYEE,DEALER,SUPPLIER,CUSTOMER,POOLID,PARTNER"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "entitlement",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "entitlement"
+    }
+  ],
+  "changelogDate": "20210206221223",
+  "entityTableName": "application",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

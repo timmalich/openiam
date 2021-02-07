@@ -1,0 +1,86 @@
+{
+  "name": "Accessor",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "community",
+      "fieldType": "Community",
+      "fieldValues": "BOT,EMPLOYEE,DEALER,SUPPLIER,CUSTOMER,POOLID,PARTNER",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "FR,EN,SP,DE,ZH"
+    },
+    {
+      "fieldName": "blocked",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "country",
+      "otherEntityRelationshipName": "accessor",
+      "relationshipName": "country"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "entitlement",
+      "otherEntityRelationshipName": "accessor",
+      "relationshipName": "entitlement",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "accessor",
+      "relationshipName": "organization",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210206221123",
+  "entityTableName": "accessor",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

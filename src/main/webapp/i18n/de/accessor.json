@@ -1,0 +1,33 @@
+{
+  "openiamApp": {
+    "accessor": {
+      "home": {
+        "title": "Accessors",
+        "createLabel": "Accessor erstellen",
+        "createOrEditLabel": "Accessor erstellen oder bearbeiten",
+        "search": "Suche nach Accessor",
+        "notFound": "No Accessors found"
+      },
+      "created": "Accessor erstellt mit ID {{ param }}",
+      "updated": "Accessor aktualisiert mit ID {{ param }}",
+      "deleted": "Accessor gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Accessor {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Accessor"
+      },
+      "title": "Title",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "community": "Community",
+      "language": "Language",
+      "blocked": "Blocked",
+      "country": "Country",
+      "entitlement": "Entitlement",
+      "organization": "Organization"
+    }
+  }
+}

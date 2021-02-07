@@ -1,0 +1,14 @@
+package com.malichzhang.openiam.repository;
+
+import com.malichzhang.openiam.domain.Country;
+
+import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Spring Data  repository for the Country entity.
+ */
+@SuppressWarnings("unused")
+@Repository
+public interface CountryRepository extends JpaRepository<Country, Long> {
+}

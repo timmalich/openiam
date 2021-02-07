@@ -1,0 +1,30 @@
+{
+  "openiamApp": {
+    "organization": {
+      "home": {
+        "title": "Organizations",
+        "createLabel": "Create a new Organization",
+        "createOrEditLabel": "Create or edit a Organization",
+        "search": "Search for Organization",
+        "notFound": "No Organizations found"
+      },
+      "created": "A new Organization is created with identifier {{ param }}",
+      "updated": "A Organization is updated with identifier {{ param }}",
+      "deleted": "A Organization is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization"
+      },
+      "name": "Name",
+      "postcode": "Postcode",
+      "city": "City",
+      "streetAddress": "Street Address",
+      "stateProvince": "State Province",
+      "community": "Community",
+      "country": "Country",
+      "accessor": "Accessor"
+    }
+  }
+}

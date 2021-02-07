@@ -2,133 +2,44 @@
 
 This application was generated using JHipster 6.10.5, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.5](https://www.jhipster.tech/documentation-archive/v6.10.5).
 
+TODO
+document:
+document first start and requirements
+fix relationship loops
+consume api and add a fixable bug
 ## Development
 
-Before you can build this project, you must install and configure the following dependencies on your machine:
+Build dependencies are: 
+- node (can be installed via gradle)
+- jdk11+
+- docker
+- docker-compose
 
-1. [Node.js][]: We use Node to run a development web server and build the project.
-   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
-
-After installing Node, you should be able to run the following command to install development tools.
-You will only need to run this command when dependencies change in [package.json](package.json).
-
+Install node v6 particular for this project, because v7 currently has some deep dependency issues.
 ```
-npm install
-```
-
-We use npm scripts and [Webpack][] as our build system.
-
-Run the following commands in two separate terminals to create a blissful development experience where your browser
-auto-refreshes when files change on your hard drive.
-
+./gradlew -P nodeInstall
 ```
 
-
-./gradlew -x webpack
-
-npm start
+Setup the environment:
+```
+docker-compose -f src/main/docker/dev.yml up -d
 ```
 
-Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `npm update` and `npm install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `npm help update`.
+Note: This docker-compose file contains quite a lot of services.
+In case your hardware is limited you should know that the minimal required components for startup are postgresql and keycloak.
 
-The `npm run` command will list all of the scripts available to run for this project.
-
-## OAuth 2.0 / OpenID Connect
-
-Congratulations! You've selected an excellent way to secure your JHipster application. If you're not sure what OAuth and OpenID Connect (OIDC) are, please see [What the Heck is OAuth?](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
-
-To log in to your app, you'll need to have [Keycloak](https://keycloak.org) up and running. The JHipster Team has created a Docker container for you that has the default users and roles. Start Keycloak using the following command.
-
+Run the application:
 ```
-docker-compose -f src/main/docker/keycloak.yml up
+./gradlew
 ```
 
-The security settings in `src/main/resources/config/application.yml` are configured for this image.
+After the application is started, it should be accessible at http://localhost:8080/
+You should be able to login the ui with the credentials: admin:admin
+To verify it's working you can also check if the dummy data from `./utils/exampleCurls.sh` is shown.
 
-```yaml
-spring:
-  ...
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: http://localhost:9080/auth/realms/jhipster
-        registration:
-          oidc:
-            client-id: web_app
-            client-secret: web_app
-```
 
-### Okta
-
-If you'd like to use Okta instead of Keycloak, you'll need to change a few things. First, you'll need to create a free developer account at <https://developer.okta.com/signup/>. After doing so, you'll get your own Okta domain, that has a name like `https://dev-123456.okta.com`.
-
-Modify `src/main/resources/config/application.yml` to use your Okta settings.
-
-```yaml
-spring:
-  ...
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: https://{yourOktaDomain}/oauth2/default
-        registration:
-          oidc:
-            client-id: {clientId}
-            client-secret: {clientSecret}
-security:
-```
-
-Create an OIDC App in Okta to get a `{clientId}` and `{clientSecret}`. To do this, log in to your Okta Developer account and navigate to **Applications** > **Add Application**. Click **Web** and click the **Next** button. Give the app a name you’ll remember, specify `http://localhost:8080` as a Base URI, and `http://localhost:8080/login/oauth2/code/oidc` as a Login Redirect URI. Click **Done**, then Edit and add `http://localhost:8080` as a Logout redirect URI. Copy and paste the client ID and secret into your `application.yml` file.
-
-Create a `ROLE_ADMIN` and `ROLE_USER` group and add users into them. Modify e2e tests to use this account when running integration tests. You'll need to change credentials in `src/test/javascript/e2e/account/account.spec.ts` and `src/test/javascript/e2e/admin/administration.spec.ts`.
-
-Navigate to **API** > **Authorization Servers**, click the **Authorization Servers** tab and edit the default one. Click the **Claims** tab and **Add Claim**. Name it "groups", and include it in the ID Token. Set the value type to "Groups" and set the filter to be a Regex of `.*`.
-
-After making these changes, you should be good to go! If you have any issues, please post them to [Stack Overflow](https://stackoverflow.com/questions/tagged/jhipster). Make sure to tag your question with "jhipster" and "okta".
-
-### PWA Support
-
-JHipster ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.
-
-The service worker initialization code is commented out by default. To enable it, uncomment the following code in `src/main/webapp/index.html`:
-
-```html
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').then(function () {
-      console.log('Service Worker Registered');
-    });
-  }
-</script>
-```
-
-Note: [Workbox](https://developers.google.com/web/tools/workbox/) powers JHipster's service worker. It dynamically generates the `service-worker.js` file.
-
-### Managing dependencies
-
-For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
-
-```
-npm install --save --save-exact leaflet
-```
-
-To benefit from TypeScript type definitions from [DefinitelyTyped][] repository in development, you would run following command:
-
-```
-npm install --save-dev --save-exact @types/leaflet
-```
-
-Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Note: There are still a few other things remaining to do for Leaflet that we won't detail here.
-
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
+## More jhipster generated documentation.
+Since someone may or may not be interested in the generated documentation from jhipster we do not want to delete this yet.
 ### Doing API-First development using openapi-generator
 
 [OpenAPI-Generator]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
@@ -150,20 +61,14 @@ Refer to [Doing API-First development][] for more details.
 To build the final jar and optimize the openiam application for production, run:
 
 ```
-
-
 ./gradlew -Pprod clean bootJar
-
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
 To ensure everything worked, run:
 
 ```
-
-
 java -jar build/libs/*.jar
-
 ```
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
@@ -175,10 +80,7 @@ Refer to [Using JHipster in production][] for more details.
 To package your application as a war in order to deploy it to an application server, run:
 
 ```
-
-
 ./gradlew -Pprod -Pwar clean bootWar
-
 ```
 
 ## Testing

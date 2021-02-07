@@ -1,0 +1,63 @@
+{
+  "name": "Organization",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "postcode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "streetAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stateProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "community",
+      "fieldType": "Community",
+      "fieldValues": "BOT,EMPLOYEE,DEALER,SUPPLIER,CUSTOMER,POOLID,PARTNER",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "country",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "country"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "accessor",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "accessor",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210206221023",
+  "entityTableName": "organization",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

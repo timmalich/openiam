@@ -1,0 +1,26 @@
+{
+  "openiamApp": {
+    "entitlement": {
+      "home": {
+        "title": "Entitlements",
+        "createLabel": "Entitlement erstellen",
+        "createOrEditLabel": "Entitlement erstellen oder bearbeiten",
+        "search": "Suche nach Entitlement",
+        "notFound": "No Entitlements found"
+      },
+      "created": "Entitlement erstellt mit ID {{ param }}",
+      "updated": "Entitlement aktualisiert mit ID {{ param }}",
+      "deleted": "Entitlement gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Entitlement {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Entitlement"
+      },
+      "name": "Name",
+      "description": "Description",
+      "application": "Application",
+      "accessor": "Accessor"
+    }
+  }
+}

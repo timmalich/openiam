@@ -1,0 +1,47 @@
+{
+  "name": "Country",
+  "fields": [
+    {
+      "fieldName": "countryName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "countryCode",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "accessor",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "accessor",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "organization",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210206220923",
+  "entityTableName": "country",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
