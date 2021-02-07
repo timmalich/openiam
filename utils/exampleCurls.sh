@@ -10,4 +10,6 @@ echo -e "\n\nOrganizations:"
 curl -H "Authorization: Bearer $token" http://localhost:8080/api/organizations
 echo -e "\n\nEntitlements:"
 curl -H "Authorization: Bearer $token" http://localhost:8080/api/entitlements
+echo -e "\n\nEntitlements of Accessor:"
+curl -H "Authorization: Bearer $token" http://localhost:8080/api/accessors/1/entitlements
 echo

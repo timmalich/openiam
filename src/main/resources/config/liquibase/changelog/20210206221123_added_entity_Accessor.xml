@@ -96,4 +96,14 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="20210206221123-1-data-custom" author="jhipster" context="faker">
+        <loadData
+                file="config/liquibase/fake-data/accessor_entitlement.csv"
+                separator=";"
+                tableName="accessor_entitlement">
+            <column name="accessor_id" type="numeric"/>
+            <column name="entitlement_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

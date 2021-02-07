@@ -1,5 +1,6 @@
 package com.malichzhang.openiam.service.impl;
 
+import com.malichzhang.openiam.domain.Accessor;
 import com.malichzhang.openiam.service.EntitlementService;
 import com.malichzhang.openiam.domain.Entitlement;
 import com.malichzhang.openiam.repository.EntitlementRepository;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -48,6 +50,11 @@ public class EntitlementServiceImpl implements EntitlementService {
     public List<Entitlement> findAll() {
         log.debug("Request to get all Entitlements");
         return entitlementRepository.findAll();
+    }
+
+    @Override
+    public List<Entitlement> findAllByAccessorsIs(Accessor accessors) {
+        return entitlementRepository.findAllByAccessorsIs(accessors);
     }
 
 

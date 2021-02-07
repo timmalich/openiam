@@ -1,9 +1,11 @@
 package com.malichzhang.openiam.service;
 
+import com.malichzhang.openiam.domain.Accessor;
 import com.malichzhang.openiam.domain.Entitlement;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Interface for managing {@link Entitlement}.
@@ -24,6 +26,8 @@ public interface EntitlementService {
      * @return the list of entities.
      */
     List<Entitlement> findAll();
+
+    List<Entitlement> findAllByAccessorsIs(Accessor accessors);
 
 
     /**
