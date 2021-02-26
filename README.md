@@ -1,34 +1,80 @@
 # openiam
 
-This application was generated using JHipster 6.10.5, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.5](https://www.jhipster.tech/documentation-archive/v6.10.5).
+**This is just a dummy application for job candidates.**
+Fix a bug, implement a new feature, write a test, correct the documentation or build pipelines. Do whatever you prefer.
+You can either choose an existing issue or even create a new one. When you are done just create a merge request.
 
-TODO
-document:
-document first start and requirements
-fix relationship loops
-consume api and add a fixable bug
-## Development
+**Important** We do not want you to waste a lot of your time just for the interview! Please do not spend more than AT MOST one work day! 
+It is NOT important to create super complex but elegant solutions.
+What we are most interested in, is:
+- how you approached the subject,
+- what you did,
+- how you did it and
+-  what problems you faced.  
+
+Therefore, even 'failing' or partly working solutions are totally fine. 
+In this case just create a merge request containing the flag 'WIP' (work in progress) within the request title.
+
+Please try to create the merge request at latest 24 hours before the interview.
+
+One last thing before we dig into the fake project: The real team and customers are all fluent in German. 
+Therefore, the issues will be described in German and the interview will be in German too. 
+The code and documentation language is English.
+
+
+## Description of this FAKE project
+Open IAM (Identity and Access Management) aims to be the world's most powerful IAM solution. We use FOSS and we love FOSS.
+We used jhipster to create the project because the first 'fullstack lead architect' decided that it's great. 
+A couple of month ago he left. Since that day the community is discussing and deciding all architectural questions.
+Currently, the community (we) with all developers feel good and comfortable with the new setup.
+Even though the community thinks that jhipster is cool and powerful we don't beleave that we must stick with it forever.
+This means issues CAN be solved but don't have to be solved using jhipster. 
+
+Community mindset:
+- fail fast, fail often
+- every opinion and idea is valuable
+- every commit and line of code is valuable - only deleting deprecated code is even better
+- KISS - keep it simple stupid
+- readable code is even worth more than compiling code
+- quality assurance:
+  - try to use test driven development wherever possible
+  - always use merge requests
+
+Well known entities:
+- Organization: e.g. a workplace of an employee, a supplier, a dealer, a business partner, ...
+- Accessor: Accessors are basically users. They can be a member of an organization and have access to applications
+- Country: all countries in the world. E.g. users and organizations can be located in countries
+- Application: Applications can be used by Accessors. They manage their permissions with entitlements.
+- Entitlement: Most fine granular permission element. An application can have multiple entitlements. It can use it to check if an accessor is allowed to trigger an action or not. 
+
+## Development Setup
 
 Build dependencies are: 
-- node (can be installed via gradle)
+- node v6 (can and should be installed via gradle). Do not use v7 because it will lead you to tons of dependency issues.
 - jdk11+
 - docker
 - docker-compose
 
-Install node v6 particular for this project, because v7 currently has some deep dependency issues.
+Install node v6 particular for this project.
 ```
 ./gradlew -P nodeInstall
 ```
 
 Setup the environment:
+Hint: This docker-compose file contains quite a lot of services.
+In case your hardware is limited you should know that the minimal required components for start-up and login are postgresql and keycloak.
 ```
 docker-compose -f src/main/docker/dev.yml up -d
 ```
 
-Note: This docker-compose file contains quite a lot of services.
-In case your hardware is limited you should know that the minimal required components for startup are postgresql and keycloak.
-
 Run the application:
+Hint: These exceptions on start-up are intended (see issues) and can be ignored.:
+- `java.lang.IllegalStateException: handshake failed, mismatched cluster name`
+- `liquibase.exception.MigrationFailedException: Migration failed for change set config/liquibase/changelog/20210206221023_added_entity_constraints_Organization.xml::20210206221023-2::jhipster`
+- `java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module`
+- `java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled`
+- `Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+  --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED`
 ```
 ./gradlew
 ```
@@ -39,7 +85,9 @@ To verify it's working you can also check if the dummy data from `./utils/exampl
 
 
 ## More jhipster generated documentation.
-Since someone may or may not be interested in the generated documentation from jhipster we do not want to delete this yet.
+Since someone may or may not be interested in the generated documentation from jhipster we do not want to delete this yet. Someone from the community should check if the below content is valuable or can be deleted.
+YOU (THE CANDIDATE) REALLY DON'T NEED TO READ THE BELOW PART YET! 
+
 ### Doing API-First development using openapi-generator
 
 [OpenAPI-Generator]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
